@@ -4,6 +4,7 @@
 
 import React, {Component} from 'react';
 import './css/Calendar.css'
+import moment from 'moment'
 
 const mL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -13,28 +14,37 @@ class Month extends Component {
         super(props)
         this.state = {
             months: [],
-            monthNumber: []
+            monthNumber: [],
+            holidays: []
 
         }
         this.setMonths = this.setMonths.bind(this)
         this.getMonthName = this.getMonthName.bind(this)
     }
 
-    setMonths(months, monthNumber) {
-        this.setState({months: months, monthNumber: monthNumber})
+    setMonths(months, monthNumber, holidays) {
+        this.setState({months: months, monthNumber: monthNumber, holidays: holidays})
     }
 
     getMonthName(monthN) {
         return mL[monthN - 1]
     }
 
+    getHoliday(obj) {
+        let {day, month} = obj
+        this.state.holidays.find((item) => {
+            console.log(((moment(item.date).format("DD") === day) && moment(item.date).format("MM") === month) ? "Equals" : "Not")
+            return (moment(item.date).format("DD") === day && moment(item.date).format("MM") === month)
+        })
+    }
+
     componentWillReceiveProps(props) {
-        this.setMonths(props.months, props.monthNumber)
+        this.setMonths(props.months, props.monthNumber, props.holidays)
         console.log("props", props)
     }
 
     componentWillMount() {
-        this.setMonths(this.props.months, this.props.monthNumber)
+        this.setMonths(this.props.months, this.props.monthNumber, this.props.holidays)
         console.log("this.props", this.props)
     }
 
@@ -66,7 +76,10 @@ class Month extends Component {
                         </ul>
                         <ul className="days">
                             {item.days.map((item, index) => {
-                                return <li key={index}>{item.day}</li>
+                                return <li key={index}
+                                           style={ this.getHoliday(item) ?
+                                               {backgroundColor: 'orange'} :
+                                               {backgroundColor: 'red'}}>{item.day}</li>
                             })}
                         </ul>
                     </div>

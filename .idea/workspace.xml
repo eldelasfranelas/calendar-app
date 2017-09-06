@@ -5,7 +5,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Calendar.js" afterPath="$PROJECT_DIR$/src/components/Calendar.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Month.js" afterPath="$PROJECT_DIR$/src/components/Month.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/css/Calendar.css" afterPath="$PROJECT_DIR$/src/components/css/Calendar.css" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,8 +28,8 @@
       <file leaf-file-name="Calendar.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Calendar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+            <state relative-caret-position="578">
+              <caret line="144" column="0" lean-forward="false" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
               <folding>
                 <element signature="e#53#92#0" expanded="true" />
               </folding>
@@ -41,8 +40,8 @@
       <file leaf-file-name="Month.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Month.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+            <state relative-caret-position="462">
+              <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
               <folding>
                 <element signature="e#54#93#0" expanded="true" />
               </folding>
@@ -254,7 +253,7 @@
       <workItem from="1504487432151" duration="2305000" />
       <workItem from="1504580244482" duration="2130000" />
       <workItem from="1504650920384" duration="273000" />
-      <workItem from="1504666079074" duration="6326000" />
+      <workItem from="1504666079074" duration="8732000" />
     </task>
     <task id="LOCAL-00001" summary="Feat #1: Added to package the follow dependencies: MomentJS, Axios&#10;Feat #2: Added new components: Calendar, Month">
       <created>1504668694614</created>
@@ -263,11 +262,18 @@
       <option name="project" value="LOCAL" />
       <updated>1504668694614</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Feat #1: Dinamyc month and days, getting holidays from holidays api">
+      <created>1504673229118</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1504673229118</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11446000" />
+    <option name="totallyTimeSpent" value="13852000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="936" extended-state="0" />
@@ -302,7 +308,8 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="Feat #1: Added to package the follow dependencies: MomentJS, Axios&#10;Feat #2: Added new components: Calendar, Month" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feat #1: Added to package the follow dependencies: MomentJS, Axios&#10;Feat #2: Added new components: Calendar, Month" />
+    <MESSAGE value="Feat #1: Dinamyc month and days, getting holidays from holidays api" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat #1: Dinamyc month and days, getting holidays from holidays api" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -433,8 +440,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Month.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+        <state relative-caret-position="462">
+          <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
           <folding>
             <element signature="e#54#93#0" expanded="true" />
           </folding>
@@ -443,8 +450,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Calendar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+        <state relative-caret-position="578">
+          <caret line="144" column="0" lean-forward="false" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
           <folding>
             <element signature="e#53#92#0" expanded="true" />
           </folding>

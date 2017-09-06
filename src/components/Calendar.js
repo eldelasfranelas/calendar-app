@@ -6,6 +6,8 @@ import moment from 'moment'
 import Month from './Month'
 import axios from 'axios'
 
+const HOLIDAY_API_KEY = 'b99d2b18-a57b-4bbb-98f7-0481b9edd2e7'
+
 class Calendar extends Component {
 
     constructor(props) {
@@ -16,11 +18,39 @@ class Calendar extends Component {
             code: '',
             months: [],
             monthNumber: [],
-            holidays:[]
+            holidays: []
         };
 
         this.calcDays = this.calcDays.bind(this)
         this.onChangeInput = this.onChangeInput.bind(this)
+        this.fetchHolidays = this.fetchHolidays.bind(this)
+    }
+
+    fetchHolidays() {
+        let vm = this
+        console.log("Year", moment(this.state.date).format('YYYY'))
+        console.log("month", moment(this.state.date).format('MM'))
+        axios.get('https://holidayapi.com/v1/holidays', {
+            params: {
+                key: HOLIDAY_API_KEY,
+                country: this.state.code,
+                year: moment(this.state.date).format('YYYY'),
+                month: moment(this.state.date).format('MM')
+            }
+        })
+            .then(function (response) {
+                console.log(response)
+
+                if (response.status === 200) {
+                    let {data} = response
+                    vm.setState({holidays: data.holidays})
+                }
+
+                vm.calcDays()
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
     }
 
     /**
@@ -103,13 +133,19 @@ class Calendar extends Component {
 
 
     _renderMonthComponent() {
-        if (this.state.months.length === 0) {
-            return <div>
-                <h4> Please, complete the info and then press "Get dates" :)</h4>
-            </div>
-        }
 
-        return <Month months={this.state.months} monthNumber={this.state.monthNumber} holidays={this.state.holidays}/>
+        // if (this.state.months.length === 0) {
+        //     return <div>
+        //         <h4> Please, complete the info and then press "Get dates" :)</h4>
+        //     </div>
+        // }
+
+        return (
+            <div>
+                <h4> Please, complete the info and then press "Get dates" :)</h4>
+                <Month months={this.state.months} monthNumber={this.state.monthNumber} holidays={this.state.holidays}/>
+            </div>
+        )
     }
 
     render() {
@@ -120,17 +156,19 @@ class Calendar extends Component {
                        name="date"
                        onChange={this.onChangeInput}/>
                 <br/>
-                <input type="text" placeholder="Number of days" value={this.state.day}
+                <input type="number" placeholder="Number of days" value={this.state.day}
                        name="day"
                        onChange={this.onChangeInput}
                 />
                 <br/>
                 <input type="text" placeholder="Country code" value={this.state.code}
                        name="code"
+                       min={2}
+                       max={2}
                        onChange={this.onChangeInput}
                 />
                 <br/>
-                <button type="button" onClick={this.calcDays}>Get dates</button>
+                <button type="button" onClick={this.fetchHolidays}>Get dates</button>
 
 
                 <br/>
