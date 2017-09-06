@@ -10,6 +10,11 @@ body {
     font-family: Verdana, sans-serif;
 }
 
+.container {
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
 .month {
     padding: 70px 25px;
     width: 100%;
@@ -43,6 +48,7 @@ body {
     margin: 0;
     padding: 10px 0;
     background-color: #ddd;
+    font-size: 12px
 }
 
 .weekdays li {

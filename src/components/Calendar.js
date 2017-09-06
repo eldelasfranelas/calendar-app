@@ -4,6 +4,7 @@
 import React, {Component} from 'react';
 import moment from 'moment'
 import Month from './Month'
+import axios from 'axios'
 
 class Calendar extends Component {
 
@@ -13,7 +14,9 @@ class Calendar extends Component {
             date: '',
             day: '',
             code: '',
-            months: []
+            months: [],
+            monthNumber: [],
+            holidays:[]
         };
 
         this.calcDays = this.calcDays.bind(this)
@@ -66,20 +69,30 @@ class Calendar extends Component {
         let endDay = moment(moment(this.state.date).add(parseInt(this.state.day), 'd'))
         console.log(endDay)
 
-        let results = this.enumerateDaysBetweenDates(startDay, endDay);
+        let {months, dates} = this.enumerateDaysBetweenDates(startDay, endDay);
         let montArr = []
-        results.months.forEach((item, index) => {
-            montArr.push(results.dates.filter((obj, index) => {
-                return obj.month == item
-            }))
+        months.forEach((item, index) => {
+
+            montArr[item] = {
+                days: dates.filter((obj, index) => {
+                    return obj.month == item
+                })
+            }
+            // montArr.push(dates.filter((obj, index) => {
+            //     return obj.month == item
+            // }))
         })
 
         // console.log(monthly)
+        this.setState({months: montArr, monthNumber: months})
 
         console.log(montArr);
-        console.log(results);
     }
 
+    /**
+     * @function onChangeInput to change states dynamically
+     * @param event
+     */
     onChangeInput(event) {
         // console.log("event", event.target.name)
         this.setState({[event.target.name]: event.target.value}, () => {
@@ -92,11 +105,11 @@ class Calendar extends Component {
     _renderMonthComponent() {
         if (this.state.months.length === 0) {
             return <div>
-                <h1> Please, complete the info and then press "Get dates" :)</h1>
+                <h4> Please, complete the info and then press "Get dates" :)</h4>
             </div>
         }
 
-        return <Month/>
+        return <Month months={this.state.months} monthNumber={this.state.monthNumber} holidays={this.state.holidays}/>
     }
 
     render() {
